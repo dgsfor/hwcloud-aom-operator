@@ -1,0 +1,20 @@
+# permissions for end users to view aomgroups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aomgroup-viewer-role
+rules:
+- apiGroups:
+  - itmonkey.itmonkey.icu
+  resources:
+  - aomgroups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - itmonkey.itmonkey.icu
+  resources:
+  - aomgroups/status
+  verbs:
+  - get

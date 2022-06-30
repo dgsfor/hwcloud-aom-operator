@@ -1,0 +1,73 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: aomgroups.itmonkey.itmonkey.icu
+spec:
+  group: itmonkey.itmonkey.icu
+  names:
+    kind: AomGroup
+    listKind: AomGroupList
+    plural: aomgroups
+    singular: aomgroup
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: AomGroup is the Schema for the aomgroups API
+        properties:
+          apiVersion:
+            description: 'APIVersion defines the versioned schema of this representation
+              of an object. Servers should convert recognized schemas to the latest
+              internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
+            type: string
+          kind:
+            description: 'Kind is a string value representing the REST resource this
+              object represents. Servers may infer this from the endpoint the client
+              submits requests to. Cannot be updated. In CamelCase. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds'
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: AomGroupSpec defines the desired state of AomGroup
+            properties:
+              deployment:
+                description: Foo is an example field of AomGroup. Edit aomgroup_types.go
+                  to remove/update
+                type: string
+              group_attribute:
+                properties:
+                  cooldown_time:
+                    type: integer
+                  max_instances:
+                    type: integer
+                  min_instances:
+                    type: integer
+                required:
+                - cooldown_time
+                - max_instances
+                - min_instances
+                type: object
+              id:
+                type: string
+            required:
+            - deployment
+            type: object
+          status:
+            description: AomGroupStatus defines the observed state of AomGroup
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

@@ -1,0 +1,7 @@
+apiVersion: itmonkey.itmonkey.icu/v1
+kind: AomGroup
+metadata:
+  name: aomgroup-idphoto-test
+  namespace: algorithm-pre
+spec:
+  deployment: idphoto-test

@@ -1,0 +1,24 @@
+# permissions for end users to edit aomgroups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: aomgroup-editor-role
+rules:
+- apiGroups:
+  - itmonkey.itmonkey.icu
+  resources:
+  - aomgroups
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - itmonkey.itmonkey.icu
+  resources:
+  - aomgroups/status
+  verbs:
+  - get

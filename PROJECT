@@ -1,0 +1,25 @@
+domain: itmonkey.icu
+layout:
+- go.kubebuilder.io/v3
+projectName: hwcloud-aom-operator
+repo: hwcloud-aom-operator
+resources:
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: itmonkey.icu
+  group: itmonkey
+  kind: AomGroup
+  path: hwcloud-aom-operator/api/v1
+  version: v1
+- api:
+    crdVersion: v1
+    namespaced: true
+  controller: true
+  domain: itmonkey.icu
+  group: itmonkey
+  kind: AomPolicy
+  path: hwcloud-aom-operator/api/v1
+  version: v1
+version: "3"

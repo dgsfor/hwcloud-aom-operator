@@ -1,0 +1,82 @@
+---
+apiVersion: apiextensions.k8s.io/v1beta1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.8.0
+  creationTimestamp: null
+  name: aomgroups.itmonkey.itmonkey.icu
+spec:
+  group: itmonkey.itmonkey.icu
+  names:
+    kind: AomGroup
+    listKind: AomGroupList
+    plural: aomgroups
+    singular: aomgroup
+  additionalPrinterColumns:
+    - JSONPath: .spec.deployment
+      description: binding deployment name
+      name: Deployment
+      type: string
+    - JSONPath: .spec.id
+      description: binding aom group id
+      name: Id
+      type: string
+    - JSONPath: .spec.group_attribute.max_instances
+      description: the max instance of the aom group
+      name: MaxInstances
+      type: integer
+    - JSONPath: .spec.group_attribute.min_instances
+      description: the min instance of the aom group
+      name: MinInstances
+      type: integer
+    - JSONPath: .spec.group_attribute.cooldown_time
+      description: the time between of the two scale
+      name: CooldownTime
+      type: integer
+  scope: Namespaced
+  validation:
+    openAPIV3Schema:
+      properties:
+        apiVersion:
+          type: string
+        kind:
+          type: string
+        metadata:
+          type: object
+        spec:
+          type: object
+          required:
+          - deployment
+          properties:
+            deployment:
+              type: string
+            group_attribute:
+              type: object
+              properties:
+                max_instances:
+                  type: integer
+                  minimum: 0
+                  maximum: 10000
+                min_instances:
+                  type: integer
+                  minimum: 0
+                  maximum: 10000
+                cooldown_time:
+                  type: integer
+                  minimum: 60
+                  maximum: 3600
+        status:
+          type: object
+      type: object
+  version: v1
+  versions:
+  - name: v1
+    served: true
+    storage: true
+status:
+  acceptedNames:
+    kind: ""
+    plural: ""
+  conditions: []
+  storedVersions: []

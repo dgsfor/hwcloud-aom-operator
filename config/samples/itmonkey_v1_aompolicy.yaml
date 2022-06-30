@@ -1,0 +1,6 @@
+apiVersion: itmonkey.itmonkey.icu/v1
+kind: AomPolicy
+metadata:
+  name: aompolicy-sample
+spec:
+  # TODO(user): Add fields here
