@@ -59,6 +59,31 @@ spec:
             type: object
           status:
             description: AomGroupStatus defines the observed state of AomGroup
+            properties:
+              conditions:
+                description: 'INSERT ADDITIONAL STATUS FIELD - define observed state
+                  of cluster Important: Run "make" to regenerate code after modifying
+                  this file'
+                items:
+                  properties:
+                    lastedTranslationTime:
+                      format: date-time
+                      type: string
+                    message:
+                      type: string
+                    ready:
+                      type: boolean
+                  required:
+                  - lastedTranslationTime
+                  - message
+                  - ready
+                  type: object
+                type: array
+              phase:
+                type: string
+            required:
+            - conditions
+            - phase
             type: object
         type: object
     served: true
