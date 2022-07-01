@@ -40,10 +40,25 @@ type AomGroupSpec struct {
 	GroupAttribute AomGroupRuleSpec `json:"group_attribute,omitempty"`
 }
 
+type AomGroupPhase string
+
+var (
+	AomGroupRunning AomGroupPhase = "Running"
+	AomGroupFailed  AomGroupPhase = "Failed"
+)
+
+type AomGroupCondition struct {
+	Ready                 bool        `json:"ready"`
+	Message               string      `json:"message"`
+	LastedTranslationTime metav1.Time `json:"lastedTranslationTime"`
+}
+
 // AomGroupStatus defines the observed state of AomGroup
 type AomGroupStatus struct {
 	// INSERT ADDITIONAL STATUS FIELD - define observed state of cluster
 	// Important: Run "make" to regenerate code after modifying this file
+	Conditions []AomGroupCondition `json:"conditions"`
+	Phase      AomGroupPhase       `json:"phase"`
 }
 
 //+kubebuilder:object:root=true
